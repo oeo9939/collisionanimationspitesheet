@@ -14,5 +14,7 @@ class Explosion {
         this.y = y;
         this.spriteWidth = 200;
         this.spriteHeight = 179;
+        this.width = this.spriteWidth / 2;
+        this.height = this.spriteHeight / 2;
     }
 }
