@@ -6,6 +6,9 @@ https://www.youtube.com/watch?v=GFO_txvwK_c&ab_channel=freeCodeCamp.org
 Franks laboratory
 https://www.youtube.com/c/Frankslaboratory
 
+Assets for game developers
+https://bevouliin.com/
+
 Comment by Markus Zeller on Franks project:
 
 ++i better than i++, ++i updates i to i = i + 1 and returns i,
