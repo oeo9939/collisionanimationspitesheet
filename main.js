@@ -21,6 +21,7 @@ class Explosion {
         this.image = new Image();
         this.image.src = "/assets/boom.png";
         this.frame = 0;
+        this.timer = 0;
     }
     update() {
         this.frame++;
@@ -34,7 +35,20 @@ class Explosion {
 }
 
 window.addEventListener("click", (e) => {
-    console.log(e);
-    ctx.fillStyle = "white";
-    ctx.fillRect(e.x - canvasPosition.left - 25, e.y - canvasPosition.top - 25, 50, 50);
+    let positionX = e.x - canvasPosition.left;
+    let positionY = e.y - canvasPosition.top;
+    // console.log(e);
+    // ctx.fillStyle = "white";
+    // ctx.fillRect(e.x - canvasPosition.left - 25, e.y - canvasPosition.top - 25, 50, 50);
+    explosions.push(new Explosion(positionX, positionY));
 });
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < explosions.length; i++) {
+        explosions[i].update();
+        explosions[i].draw();
+    }
+    requestAnimationFrame(animate);
+}
+animate();
