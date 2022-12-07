@@ -14,14 +14,15 @@ class Explosion {
     constructor(x, y){
         this.spriteWidth = 200;
         this.spriteHeight = 179;
-        this.width = this.spriteWidth * 0.7;
-        this.height = this.spriteHeight * 0.7;
-        this.x = x - this.width / 2;
-        this.y = y - this.height / 2;
+        this.width = this.spriteWidth * 0.3;
+        this.height = this.spriteHeight * 0.3;
+        this.x = x;
+        this.y = y;
         this.image = new Image();
         this.image.src = "/assets/boom.png";
         this.frame = 0;
         this.timer = 0;
+        this.angle = Math.random() * 6.2;
     }
     update() {
         this.timer++;
@@ -31,10 +32,14 @@ class Explosion {
     }
 
     draw(){
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
         // ctx.drawImage(image(we want to draw), [sx(source x), sy(source y),
         //  sw(source width), sh(source height) of area you want to crop out of source sprite sheet],
         //  dx, dy, dw, dh (destination x, y, width, height determine where you want to put the croped out img));
-        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+        ctx.drawImage(this.image, this.spriteWidth * this.frame, 0, this.spriteWidth, this.spriteHeight, 0 - this.width / 2, 0 - this.height / 2, this.width, this.height);
+        ctx.restore();
     }
 }
 
@@ -42,9 +47,9 @@ window.addEventListener("click", (u) => {
     createAnimation(u);
 });
 
-window.addEventListener("mousemove", (u) => {
-    createAnimation(u);
-});
+// window.addEventListener("mousemove", (u) => {
+//     createAnimation(u);
+// });
 
 function createAnimation(e) {
     let positionX = e.x - canvasPosition.left;
