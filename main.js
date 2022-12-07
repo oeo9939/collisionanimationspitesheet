@@ -12,20 +12,24 @@ let canvasPosition = canvas.getBoundingClientRect();
 
 class Explosion {
     constructor(x, y){
-        this.x = x;
-        this.y = y;
         this.spriteWidth = 200;
         this.spriteHeight = 179;
-        this.width = this.spriteWidth / 2;
-        this.height = this.spriteHeight / 2;
+        this.width = this.spriteWidth * 0.7;
+        this.height = this.spriteHeight * 0.7;
+        this.x = x - this.width / 2;
+        this.y = y - this.height / 2;
         this.image = new Image();
         this.image.src = "/assets/boom.png";
         this.frame = 0;
         this.timer = 0;
     }
     update() {
-        this.frame++;
+        this.timer++;
+        if (this.timer % 10 === 0) {
+            this.frame++;
+        };
     }
+
     draw(){
         // ctx.drawImage(image(we want to draw), [sx(source x), sy(source y),
         //  sw(source width), sh(source height) of area you want to crop out of source sprite sheet],
