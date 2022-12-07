@@ -38,7 +38,15 @@ class Explosion {
     }
 }
 
-window.addEventListener("click", (e) => {
+window.addEventListener("click", (u) => {
+    createAnimation(u);
+});
+
+window.addEventListener("mousemove", (u) => {
+    createAnimation(u);
+});
+
+function createAnimation(e) {
     let positionX = e.x - canvasPosition.left;
     let positionY = e.y - canvasPosition.top;
     // console.log(e);
@@ -46,7 +54,7 @@ window.addEventListener("click", (e) => {
     // ctx.fillRect(e.x - canvasPosition.left - 25, e.y - canvasPosition.top - 25, 50, 50);
     explosions.push(new Explosion(positionX, positionY));
     console.log(explosions);
-});
+}
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
