@@ -45,6 +45,7 @@ window.addEventListener("click", (e) => {
     // ctx.fillStyle = "white";
     // ctx.fillRect(e.x - canvasPosition.left - 25, e.y - canvasPosition.top - 25, 50, 50);
     explosions.push(new Explosion(positionX, positionY));
+    console.log(explosions);
 });
 
 function animate() {
@@ -52,6 +53,10 @@ function animate() {
     for (let i = 0; i < explosions.length; i++) {
         explosions[i].update();
         explosions[i].draw();
+        if (explosions[i].frame > 5) {
+            explosions.splice(i, 1);
+            i--;
+        }
     }
     requestAnimationFrame(animate);
 }
